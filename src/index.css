@@ -5,9 +5,133 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #1F1F1F;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.nav {
+  width: 20%;
+  height: 100vh;
+  background-color: #1A1A1A;
+  position: relative;
+  left: 0;
+  float: left;
+  padding: 0;
+  margin: 0;
+  margin-right: 2%;
+}
+
+.logo {
+  width: 80%;
+  height: 200px;
+  background-image: url("./images/logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+.page-links {
+  width: 100%;
+  height: 50px;
+  /* background-color: red; */
+  font-family: 'Abel', sans-serif;
+  color: white;
+}
+
+.L1:hover {
+  border-left: solid 4px #5C90F6;
+}
+
+.L2:hover {
+  border-left: solid 4px #F65C5C;
+}
+
+.L3:hover {
+  border-left: solid 4px #F6CB5C;
+}
+
+.L4:hover {
+  border-left: solid 4px #68F65C;
+}
+
+.links {
+  padding-top: 13px;
+  text-align: left;
+  padding-left: 100px;
+  font-weight: normal;
+  text-decoration: none;
+  color: white;
+  font-family: 'Abel', sans-serif;
+  font-weight: normal;
+}
+
+h3 {
+  text-decoration: none;
+  color: white;
+  font-family: 'Abel', sans-serif;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-heading {
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-weight: normal;
+  font-size: 40pt;
+  text-align: left;
+  padding-top: 30px;
+  font-family: 'Abel', sans-serif;
+}
+
+.about-heading-top {
+  padding-top: 20px;
+  font-family: 'Abel', sans-serif;
+  color: white;
+  font-weight: normal;
+  text-align: left;
+}
+
+.about-con {
+  width: 40%;
+  height: 40vh;
+  background-color: #1A1A1A;
+  margin-left: 25%;
+  border-radius: 30px;
+}
+
+.about {
+  color: white;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+
+.salary-heading {
+  margin: 0;
+  margin-top: 200px;
+  margin-bottom: 3px;
+  padding: 0;
+  font-size: 10pt;
+}
+
+.salary {
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
