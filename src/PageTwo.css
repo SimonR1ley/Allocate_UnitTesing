@@ -6,6 +6,7 @@
     padding-top: 30px;
     font-family: 'Abel', sans-serif;
     margin: 0;
+    margin-left: 25%;
 }
 
 .left-side {
@@ -15,7 +16,7 @@
     width: 40%;
     height: 80vh;
     /* background-color: #F65C5C; */
-    /* margin-left: 25%; */
+    margin-left: 25%;
 }
 
 .right-side {
@@ -24,6 +25,58 @@
     height: 90vh;
     /* background-color: #F65C5C; */
     margin-top: -8%;
+}
+
+.salary-con {
+    width: 85%;
+    height: 150px;
+    /* background-color: aquamarine; */
+    margin-top: 40px;
+}
+
+.add-salary-heading{
+    padding-top: 20px;
+    font-family: 'Abel', sans-serif;
+    color: white;
+    font-weight: normal;
+    text-align: left;
+}
+
+.salary-heading {
+    text-align: left;
+    margin-bottom: 3px;
+    margin-top: 0;
+    padding: 0;
+    padding-top: 12px;
+    padding-left: 15px;
+}
+
+.salary {
+    height: 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-top: 13px;
+    background-color: rgba(0, 0, 0, 0.17);
+}
+
+.salary-split{
+    width: 30%;
+    height: 100%;
+    float: left;
+    /* padding-top: 0.5px; */
+}
+
+.salary-split-input{
+    width: 60%;
+    height: 100%;
+    float: left;
+    padding: 0;
+    margin: 0;
+    /* padding-top: 0.5px; */
 }
 
 .add-expense-heading {
@@ -182,7 +235,7 @@ input {
     /* text-align: center; */
 }
 
-.expenses-container{
+.expenses-container {
     height: 250px;
     width: 85%;
     /* background-color: #F65C5C; */
@@ -191,4 +244,34 @@ input {
 
 .expenses-container::-webkit-scrollbar {
     display: none;
-  }
+}
+
+.chart-con {
+    width: 90%;
+    height: 60%;
+    /* margin: 0 auto; */
+    /* background-color: aqua; */
+    margin-top: 100px;
+}
+
+
+
+.chart {
+    /* margin-top: 20px; */
+    width: 100% !important;
+    height: 40vh;
+    /* margin: 0 auto; */
+
+}
+
+.expense-chart-heading {
+    padding-bottom: 20px;
+    font-family: 'Abel', sans-serif;
+    color: white;
+    font-weight: normal;
+    text-align: left;
+}
+
+.render{
+    margin-top: 15px;
+}
