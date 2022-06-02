@@ -82,10 +82,7 @@ const Calculator = () => {
                 </div>
 
                 <div className='value-con'>
-                    <div className='calc-split-name'>
-                        <p className='tag'>Value Two</p>
-                    </div>
-                    <div className='calc-split-input'>
+                    <div className='calc-split-char'>
                         {/* <input className='value-input' onChange={ValueTwo} type='text'></input> */}
                         <div className='special-char-con'>
                             <button className='special-char left' onClick={Add}>+</button>

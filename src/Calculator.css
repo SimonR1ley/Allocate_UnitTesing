@@ -76,6 +76,14 @@
     /* background-color: black; */
 }
 
+.calc-split-char {
+    float: left;
+    margin-left: 22%;
+    width: 68%;
+    height: 100%;
+    /* background-color: black; */
+}
+
 .value-input {
     border: none;
     width: 90%;
