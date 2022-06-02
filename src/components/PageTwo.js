@@ -115,7 +115,7 @@ const PageTwo = () => {
     const expenseNameVal = (e) => {
         const value = e.target.value;
         setInputs({ ...inputs, expenseName: value });
-        // console.log(inputs);
+        console.log(inputs);
     }
 
     const expenseAmountVal = (e) => {
@@ -129,27 +129,27 @@ const PageTwo = () => {
         console.log(inputs);
 
 
-        // const ExpenseItem = inputs.map((item) => {
-        //     const list = (
-        //         <div className='expense-con render' key={item.expenseName + " R" + item.expenseAmount}>
-        //             <div className='expense-split no'>
-        //                 <p className='tag'>#</p>
-        //             </div>
-        //             <div className='expense-split'>
-        //                 <p className='tag'>{item.expenseName}</p>
-        //             </div>
-        //             <div className='expense-split'>
-        //                 <p className='tag'>R{item.expenseAmount}</p>
-        //             </div>
-        //             <div className='expense-split r-btn'>
-        //                 <button className='remove-expense'>Remove</button>
-        //             </div>
-        //         </div>
-        //     );
-        //     return list;
-        // });
+        const ExpenseItem = inputs.map((item) => {
+            const list = (
+                <div className='expense-con render' key={item.expenseName + " R" + item.expenseAmount}>
+                    <div className='expense-split no'>
+                        <p className='tag'>#</p>
+                    </div>
+                    <div className='expense-split'>
+                        <p className='tag'>{item.expenseName}</p>
+                    </div>
+                    <div className='expense-split'>
+                        <p className='tag'>R{item.expenseAmount}</p>
+                    </div>
+                    <div className='expense-split r-btn'>
+                        <button className='remove-expense'>Remove</button>
+                    </div>
+                </div>
+            );
+            return list;
+        });
 
-        // setExpenseItem(ExpenseItem)
+        setExpenseItem(ExpenseItem)
 
 
         const result = inputs.map(element => {
