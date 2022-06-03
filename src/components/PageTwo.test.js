@@ -12,7 +12,7 @@ describe("Testing Page Two", () => {
 
     const typeInput = (inputOne) => {
 
-        const SalaryElement = screen.getByLabelText(/salary/i)
+        const SalaryElement = screen.getByLabelText(/salaryInput/i)
 
         if (inputOne) {
             userEvent.type(SalaryElement, inputOne)
@@ -24,8 +24,8 @@ describe("Testing Page Two", () => {
 
     test("Testing Salary Input", () => {
 
-        const  SalaryElement = typeInput(inputOne = "2")
-        expect(SalaryElement.value).toBe("");
+        const  {SalaryElement} = typeInput("2")
+        expect(SalaryElement.value).toBe("2");
 
     })
 

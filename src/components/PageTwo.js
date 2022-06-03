@@ -9,10 +9,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PageTwo = () => {
 
-    const [inputs, setInputs] = useState([{
-        expenseName: '',
-        expenseAmount: ''
-    },]);
+    const [inputs, setInputs] = useState([]);
+
+    const [expenseName, setExpenseName] = useState("");
+    const [expenseAmount, setExpenseAmount] = useState("");
 
     const [ExpenseItems, setExpenseItem] = useState();
 
@@ -114,13 +114,13 @@ const PageTwo = () => {
 
     const expenseNameVal = (e) => {
         const value = e.target.value;
-        setInputs({ ...inputs, expenseName: value });
+        setExpenseName(value);
         console.log(inputs);
     }
 
     const expenseAmountVal = (e) => {
         const value = e.target.value;
-        setInputs({ ...inputs, expenseAmount: value });
+        setExpenseAmount(value);
         // console.log(inputs);
     }
 
@@ -128,8 +128,10 @@ const PageTwo = () => {
 
         console.log(inputs);
 
+        let newInputs = [...inputs, {expenseName, expenseAmount}]
 
-        const ExpenseItem = inputs.map((item) => {
+
+        const ExpenseItem = newInputs.map((item) => {
             const list = (
                 <div className='expense-con render' key={item.expenseName + " R" + item.expenseAmount}>
                     <div className='expense-split no'>
@@ -148,6 +150,8 @@ const PageTwo = () => {
             );
             return list;
         });
+
+        setInputs(newInputs)
 
         setExpenseItem(ExpenseItem)
 
@@ -184,7 +188,7 @@ const PageTwo = () => {
                             <h3 className='salary-heading'>Salary Input</h3>
                         </div>
                         <div className='salary-split-input'>
-                            <input className='salary' placeholder='eg R15000' name="salary" aria-label="salary" onChange={salaryVal}></input>
+                            <input className='salary' placeholder='eg R15000' name="salary" aria-label="salaryInput" onChange={salaryVal} />
                         </div>
 
                     </div>

@@ -1,0 +1,34 @@
+.resource-heading{
+    /* float: left; */
+    color: white;
+    font-weight: normal;
+    font-size: 40pt;
+    text-align: left;
+    padding-top: 30px;
+    font-family: 'Abel', sans-serif;
+    margin: 0;
+    margin-left: 25%;
+}
+
+.resource-con{
+    float: left;
+    width: 40%;
+    height: 600px;
+    margin-left: 25%;
+    margin-top: 50px;
+    /* background-color: aquamarine; */
+}
+
+.tax-info-heading{
+    color: white;
+    font-weight: normal;
+    text-align: left;
+    padding-top: 20px;
+    font-family: 'Abel', sans-serif;
+    margin-bottom: 50px;
+}
+
+.tax-info{
+    text-align: left;
+    margin-bottom: 30px;
+}
