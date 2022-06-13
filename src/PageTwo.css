@@ -196,7 +196,7 @@ p {
 }
 
 .overview-heading {
-    padding-top: 20px;
+    padding-top: 160px;
     font-family: 'Abel', sans-serif;
     color: white;
     font-weight: normal;
@@ -236,7 +236,8 @@ input {
 }
 
 .expenses-container {
-    height: 250px;
+    /* height: 250px; */
+    height: auto;
     width: 85%;
     /* background-color: #F65C5C; */
     overflow: scroll;
@@ -274,4 +275,43 @@ input {
 
 .render{
     margin-top: 15px;
+}
+
+
+
+
+
+
+
+.salary-con-two{
+    width: 85%;
+    height: 150px;
+    /* background-color: aquamarine; */
+    margin-top: 160px;
+}
+
+.overview-heading-two {
+    margin-top: 110px;
+    font-family: 'Abel', sans-serif;
+    color: white;
+    font-weight: normal;
+    text-align: left;
+}
+
+
+.expense-heading-two {
+    padding-top: 20px;
+    font-family: 'Abel', sans-serif;
+    color: white;
+    font-weight: normal;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.chart-con-two {
+    width: 90%;
+    height: 60%;
+    /* margin: 0 auto; */
+    /* background-color: aqua; */
+    margin-top: 160px;
 }

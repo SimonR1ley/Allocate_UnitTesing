@@ -12,11 +12,22 @@ const PageTwo = () => {
     const [inputs, setInputs] = useState([]);
 
     const [expenseName, setExpenseName] = useState("");
-    const [expenseAmount, setExpenseAmount] = useState("");
+    // const [expenseAmount, setExpenseAmount] = useState();
+
+    let expenseAmount;
 
     const [ExpenseItems, setExpenseItem] = useState();
 
-    let inputArray = inputs;
+    // let inputArray = inputs;
+
+
+    const [sum, setSum] = useState();
+    const [noExpenses, setNoExpenses] = useState();
+    const [leftOver, setLeftOver] = useState();
+
+    let newInputs;
+
+    let sumCalc = 0;
 
 
 
@@ -115,25 +126,29 @@ const PageTwo = () => {
     const expenseNameVal = (e) => {
         const value = e.target.value;
         setExpenseName(value);
-        console.log(inputs);
+        // console.log(inputs);
     }
 
     const expenseAmountVal = (e) => {
         const value = e.target.value;
-        setExpenseAmount(value);
-        // console.log(inputs);
+        // setExpenseAmount(value);
+        expenseAmount = value;
+        // console.log(expenseAmount);
+
+
     }
 
-    const addExpense = () => {
+    // onClick={()=> deleteItem(index)}
+    // splice()
 
-        console.log(inputs);
+    const deleteItem = (index) => {
+        console.log(index);
+        newInputs.splice(index, 1);
+        console.log(ExpenseItems);
 
-        let newInputs = [...inputs, {expenseName, expenseAmount}]
-
-
-        const ExpenseItem = newInputs.map((item) => {
+        const ExpenseItem = newInputs.map((item, index) => {
             const list = (
-                <div className='expense-con render' key={item.expenseName + " R" + item.expenseAmount}>
+                <div className='expense-con render' key={index}>
                     <div className='expense-split no'>
                         <p className='tag'>#</p>
                     </div>
@@ -144,31 +159,92 @@ const PageTwo = () => {
                         <p className='tag'>R{item.expenseAmount}</p>
                     </div>
                     <div className='expense-split r-btn'>
-                        <button className='remove-expense'>Remove</button>
+                        <button className='remove-expense' onClick={() => deleteItem(index)}>Remove</button>
                     </div>
                 </div>
             );
             return list;
         });
 
-        setInputs(newInputs)
 
         setExpenseItem(ExpenseItem)
 
-
-        const result = inputs.map(element => {
-            return element;
-        });
-    
-        console.log(result);
-
+        console.log(inputs);
 
     }
 
 
 
+    const addExpense = () => {
 
-  
+
+        // console.log(inputs);
+
+        newInputs = [...inputs, { expenseName, expenseAmount }]
+        setInputs(newInputs)
+
+        setNoExpenses(newInputs.length);
+
+        const ExpenseItem = newInputs.map((item, index) => {
+            const list = (
+                <div className='expense-con render' key={index}>
+                    <div className='expense-split no'>
+                        <p className='tag'>#</p>
+                    </div>
+                    <div className='expense-split'>
+                        <p className='tag'>{item.expenseName}</p>
+                    </div>
+                    <div className='expense-split'>
+                        <p className='tag'>R{item.expenseAmount}</p>
+                    </div>
+                    <div className='expense-split r-btn'>
+                        <button className='remove-expense' onClick={() => deleteItem(index)}>Remove</button>
+                    </div>
+                </div>
+            );
+            return list;
+        });
+
+
+        setExpenseItem(ExpenseItem)
+
+
+        // const result = inputs.map(element => {
+        //     return element;
+        // });
+
+        // console.log(newInputs);
+
+
+
+        for (var i = 0; i < newInputs.length; i++) {
+            sumCalc = sumCalc + (+newInputs[i].expenseAmount);
+            // noExpenses = i;
+        }
+
+        console.log(sumCalc);
+        // console.log(noExpenses);
+
+        // setNoExpenses(noExpenses);
+        setSum(sumCalc);
+
+        var lOver = salaryAfterTax - sumCalc;
+        setLeftOver(lOver);
+
+        // console.log(lOver);
+
+    }
+
+
+
+    // onClick={()=> deleteItem(index)}
+    // splice()
+
+    // screen.getByPlaceholderText('eg R15000')
+    // screen.getByPlaceholderText(/eg R15000/i)
+
+
+
 
 
 
@@ -268,7 +344,7 @@ const PageTwo = () => {
                         <p className='tag'>Total Number of Expenses</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R15000</p>
+                        <p className='tag'>{noExpenses}</p>
                     </div>
                 </div>
 
@@ -277,7 +353,7 @@ const PageTwo = () => {
                         <p className='tag'>Sum of Expenses</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R15000</p>
+                        <p className='tag'>R{sum}</p>
                     </div>
                 </div>
 
@@ -286,7 +362,7 @@ const PageTwo = () => {
                         <p className='tag'>Amount Left Over</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R15000</p>
+                        <p className='tag'>R{leftOver}</p>
                     </div>
                 </div>
 

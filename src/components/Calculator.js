@@ -74,7 +74,7 @@ const Calculator = () => {
 
                 <div className='value-con'>
                     <div className='calc-split-name'>
-                        <p className='tag'>Value Three</p>
+                        <p className='tag'>Value Two</p>
                     </div>
                     <div className='calc-split-input'>
                         <input className='value-input' onChange={ValueThree} type='number'></input>

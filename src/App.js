@@ -4,6 +4,7 @@ import Calculator from './components/Calculator';
 import Header from './components/Header';
 import PageOne from './components/PageOne';
 import PageTwo from './components/PageTwo';
+import PageThree from './components/PageThree';
 import Resources from './components/Resources';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
      <Routes>
         <Route path='/' element={<PageOne />} />
         <Route path='/pagetwo' element={<PageTwo />} />
+        <Route path='/pagethree' element={<PageThree />} />
         <Route path='/calculator' element={<Calculator />} />
         <Route path='/resources' element={<Resources />} />
       </Routes>

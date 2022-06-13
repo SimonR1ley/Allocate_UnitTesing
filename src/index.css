@@ -119,3 +119,17 @@ a {
   margin: 0 auto;
   padding-top: 50px;
 }
+
+.select{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+  text-align: left;
+}
+
+.option{
+  font-family: 'Abel', sans-serif;
+  color: white;
+  font-weight: normal;
+  text-align: left;
+}
