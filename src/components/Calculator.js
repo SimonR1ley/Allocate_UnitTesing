@@ -68,7 +68,7 @@ const Calculator = () => {
                         <p className='tag'>Value One</p>
                     </div>
                     <div className='calc-split-input'>
-                        <input className='value-input' onChange={ValueOne} type='number'></input>
+                        <input className='value-input' onChange={ValueOne} type='number' aria-label='valueOne'></input>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@ const Calculator = () => {
                         <p className='tag'>Value Two</p>
                     </div>
                     <div className='calc-split-input'>
-                        <input className='value-input' onChange={ValueThree} type='number'></input>
+                        <input className='value-input' onChange={ValueThree} type='number' aria-label='valueTwo'></input>
                     </div>
                 </div>
 
@@ -99,7 +99,7 @@ const Calculator = () => {
 
                 <div className='value-con answer-con'>
                     <div className='calc-split-answer'>
-                        <p className='answer'>{answer}</p>
+                        <p className='answer' aria-label='answer'>{answer}</p>
                     </div>
                     {/* <div className='calc-split-input'>
                         <input className='value-input'></input>

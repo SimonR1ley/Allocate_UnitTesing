@@ -1,11 +1,7 @@
 import React from 'react';
 // import '../PageTwo.css';
-import 'chart.js/auto';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useState } from "react";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PageThree = () => {
 
@@ -18,14 +14,21 @@ const PageThree = () => {
 
     let inputArray = inputs;
 
+    let newInputs;
+
+    let sumCalc = 0;
+
+    const [sum, setSum] = useState();
+    const [noExpenses, setNoExpenses] = useState();
+    const [leftOver, setLeftOver] = useState();
 
 
-    const [salaryOne, setSalaryOne] = useState();
-    const [salaryAfterTaxOne, setSalaryAfterTaxOne] = useState();
+    const [salaryOne, setSalaryOne] = useState(0);
+    const [salaryAfterTaxOne, setSalaryAfterTaxOne] = useState(0);
 
     
-    const [salaryTwo, setSalaryTwo] = useState();
-    const [salaryAfterTaxTwo, setSalaryAfterTaxTwo] = useState();
+    const [salaryTwo, setSalaryTwo] = useState(0);
+    const [salaryAfterTaxTwo, setSalaryAfterTaxTwo] = useState(0);
 
 
     const salaryValOne = (e) => {
@@ -221,6 +224,10 @@ const PageThree = () => {
 
         let newInputs = [...inputs, { expenseName, expenseAmount }]
 
+        setInputs(newInputs)
+
+        setNoExpenses(newInputs.length);
+
 
         const ExpenseItem = newInputs.map((item) => {
             const list = (
@@ -247,20 +254,70 @@ const PageThree = () => {
         setExpenseItem(ExpenseItem)
 
 
-        const result = inputs.map(element => {
-            return element;
-        });
+        // const result = inputs.map(element => {
+        //     return element;
+        // });
 
-        console.log(result);
+        // console.log(result);
+
+
+
+        for (var i = 0; i < newInputs.length; i++) {
+            sumCalc = sumCalc + (+newInputs[i].expenseAmount);
+            // noExpenses = i;
+        }
+
+        console.log(sumCalc);
+        // console.log(noExpenses);
+
+        // setNoExpenses(noExpenses);
+        setSum(sumCalc);
+
+        var lOver = combinedSalary - sumCalc;
+        setLeftOver(lOver);
+
+        // console.log(lOver);
 
 
     }
 
 
+    const deleteItem = (index) => {
+        console.log(index);
+        newInputs.splice(index, 1);
+        console.log(ExpenseItems);
+
+        const ExpenseItem = newInputs.map((item, index) => {
+            const list = (
+                <div className='expense-con render' key={index}>
+                    <div className='expense-split no'>
+                        <p className='tag'>#</p>
+                    </div>
+                    <div className='expense-split'>
+                        <p className='tag'>{item.expenseName}</p>
+                    </div>
+                    <div className='expense-split'>
+                        <p className='tag'>R{item.expenseAmount}</p>
+                    </div>
+                    <div className='expense-split r-btn'>
+                        <button className='remove-expense' onClick={() => deleteItem(index)}>Remove</button>
+                    </div>
+                </div>
+            );
+            return list;
+        });
 
 
+        setExpenseItem(ExpenseItem)
+
+        console.log(inputs);
+
+    }
 
 
+    let combinedSalary = (parseInt(salaryAfterTaxOne)) + (parseInt(salaryAfterTaxTwo));
+
+console.log(parseInt(combinedSalary));
 
 
 
@@ -280,7 +337,7 @@ const PageThree = () => {
                             <h3 className='salary-heading'>Salary Input</h3>
                         </div>
                         <div className='salary-split-input'>
-                            <input className='salary' placeholder='eg R15000' name="salary" aria-label="salaryInput" onChange={salaryValOne} />
+                            <input className='salary' placeholder='R15000' name='salaryInputOne'  onChange={salaryValOne} aria-label='salaryOne'/>
                         </div>
 
                     </div>
@@ -304,7 +361,7 @@ const PageThree = () => {
                         <p className='tag'>Salary After Tax</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R{salaryAfterTaxOne}</p>
+                        <p className='tag' aria-label='salary1AfterTax'>R{salaryAfterTaxOne}</p>
                     </div>
                 </div>
 
@@ -314,11 +371,11 @@ const PageThree = () => {
                 <h3 className='add-expense-heading'>Add Expense</h3>
                 <div className='add-expense-con'>
                     <p className='tag '>Name</p>
-                    <input className='name-input' onChange={expenseNameVal}></input>
+                    <input className='name-input' onChange={expenseNameVal} aria-label='expenseName'></input>
                 </div>
                 <div className='add-expense-con two'>
                     <p className='tag'>Amount</p>
-                    <input className='name-input' onChange={expenseAmountVal}></input>
+                    <input className='name-input' onChange={expenseAmountVal} aria-label='expenseAmount'></input>
                 </div>
                 <button className='submit-expense' onClick={addExpense}>Add</button>
 
@@ -327,28 +384,28 @@ const PageThree = () => {
 
                 <div className='overview-con'>
                     <div className='overview-split'>
-                        <p className='tag'>Salary</p>
+                        <p className='tag'>Combined Salary</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R{salaryOne}</p>
+                        <p className='tag' aria-label='combinedSalary'>R{combinedSalary}</p>
                     </div>
                 </div>
 
-                <div className='overview-con ov-top'>
+                {/* <div className='overview-con ov-top'>
                     <div className='overview-split'>
                         <p className='tag'>Salary After Tax</p>
                     </div>
                     <div className='overview-split ov-right'>
                         <p className='tag'>R{salaryAfterTaxOne}</p>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='overview-con ov-top'>
                     <div className='overview-split'>
                         <p className='tag'>Total Number of Expenses</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R15000</p>
+                        <p className='tag'aria-label='numberOfExpenses'>{noExpenses}</p>
                     </div>
                 </div>
 
@@ -357,7 +414,7 @@ const PageThree = () => {
                         <p className='tag'>Sum of Expenses</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R15000</p>
+                        <p className='tag' aria-label='sumOfExpenses'>R{sum}</p>
                     </div>
                 </div>
 
@@ -366,7 +423,7 @@ const PageThree = () => {
                         <p className='tag'>Amount Left Over</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R15000</p>
+                        <p className='tag'>R{leftOver}</p>
                     </div>
                 </div>
 
@@ -389,7 +446,7 @@ const PageThree = () => {
                             <h3 className='salary-heading'>Salary Input</h3>
                         </div>
                         <div className='salary-split-input'>
-                            <input className='salary' placeholder='eg R15000' name="salary" aria-label="salaryInput" onChange={salaryValTwo} />
+                            <input className='salary' placeholder='eg R15000' name='salary' onChange={salaryValTwo} aria-label='salaryTwo'/>
                         </div>
 
                     </div>
@@ -413,7 +470,7 @@ const PageThree = () => {
                         <p className='tag'>Salary After Tax</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R{salaryAfterTaxTwo}</p>
+                        <p className='tag' aria-label='salary2AfterTax'>R{salaryAfterTaxTwo}</p>
                     </div>
                 </div>
 
@@ -441,60 +498,6 @@ const PageThree = () => {
                     </div>
 
                     {ExpenseItems}
-                </div>
-
-
-
-                <div className='chart-con-two'>
-                    <h3 className='expense-chart-heading'>Expenses Chart</h3>
-                    <div className="chart">
-                        <Bar
-                            data={{
-                                labels: ["Unknown"],
-                                datasets: [{
-                                    label: 'Expenses',
-                                    data: [1, 2, 3, 4, 5],
-                                    backgroundColor: [
-                                        '#FC6161',
-                                        '#4DCEEA',
-                                        '#EEE85C',
-                                        '#82E26A',
-                                        '#E15CF6',
-                                        '#F6945C'
-                                    ],
-                                    borderColor: [
-                                        '#FC6161',
-                                        '#4DCEEA',
-                                        '#EEE85C',
-                                        '#82E26A',
-                                        '#E15CF6',
-                                        '#F6945C'
-                                    ],
-                                    borderWidth: 1
-                                },
-
-                                ],
-                            }}
-                            height={400}
-                            width={700}
-                            options={{
-                                maintainAspectRatio: false, scales: {
-                                    x: {
-                                        ticks: {
-                                            color: 'white'
-                                        }
-                                    },
-                                    y: {
-                                        ticks: {
-                                            color: 'white'
-                                        }
-                                    }
-                                }
-                            }
-                            }
-                        />
-
-                    </div>
                 </div>
 
             </div>

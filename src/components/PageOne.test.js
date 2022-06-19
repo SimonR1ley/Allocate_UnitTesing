@@ -1,14 +1,19 @@
-// import { render, screen } from "@testing-library/react"
-// import userEvent from "@testing-library/user-event";
-// import {PageOne} from './PageOne'
+import { render, screen } from "@testing-library/react"
+import PageOne from './PageOne'
 
-// describe("Testing Page One", () => {
-
-//     test("", () => {
-       
-//         render(<PageOne />);
-
-//     })
+describe("Testing Page One", () => {
     
+    beforeEach(() => {
 
-// })
+        render(<PageOne />);
+
+    })
+
+    
+    test("Testing To see if the heading is in the document", () => {
+
+        const Heading = screen.getAllByText(/Welcome to Allocte/i)
+
+    })
+
+})

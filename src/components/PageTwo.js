@@ -1,11 +1,7 @@
 import React from 'react';
 import '../PageTwo.css';
-import 'chart.js/auto';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useState } from "react";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PageTwo = () => {
 
@@ -120,8 +116,10 @@ const PageTwo = () => {
             // console.log("Salary After Tax: R" + salaryLeft)
         }
 
+
     }
 
+   
 
     const expenseNameVal = (e) => {
         const value = e.target.value;
@@ -138,8 +136,6 @@ const PageTwo = () => {
 
     }
 
-    // onClick={()=> deleteItem(index)}
-    // splice()
 
     const deleteItem = (index) => {
         console.log(index);
@@ -192,7 +188,7 @@ const PageTwo = () => {
                         <p className='tag'>#</p>
                     </div>
                     <div className='expense-split'>
-                        <p className='tag'>{item.expenseName}</p>
+                        <p className='tag' aria-label='checkingExpenseName'>{item.expenseName}</p>
                     </div>
                     <div className='expense-split'>
                         <p className='tag'>R{item.expenseAmount}</p>
@@ -264,7 +260,7 @@ const PageTwo = () => {
                             <h3 className='salary-heading'>Salary Input</h3>
                         </div>
                         <div className='salary-split-input'>
-                            <input className='salary' placeholder='eg R15000' name="salary" aria-label="salaryInput" onChange={salaryVal} />
+                            <input className='salary' placeholder='eg R15000' name="salary" aria-label='salaryInput' onChange={salaryVal} />
                         </div>
 
                     </div>
@@ -274,13 +270,13 @@ const PageTwo = () => {
                 <h3 className='add-expense-heading'>Add Expense</h3>
                 <div className='add-expense-con'>
                     <p className='tag '>Name</p>
-                    <input className='name-input' onChange={expenseNameVal}></input>
+                    <input className='name-input' onChange={expenseNameVal} aria-label='expenseName'></input>
                 </div>
                 <div className='add-expense-con two'>
                     <p className='tag'>Amount</p>
-                    <input className='name-input' onChange={expenseAmountVal}></input>
+                    <input className='name-input' onChange={expenseAmountVal} aria-label='expenseAmount'></input>
                 </div>
-                <button className='submit-expense' onClick={addExpense}>Add</button>
+                <button className='submit-expense' onClick={addExpense} name='add'>Add</button>
 
 
                 {/* Expenses */}
@@ -335,7 +331,7 @@ const PageTwo = () => {
                         <p className='tag'>Salary After Tax</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R{salaryAfterTax}</p>
+                        <p className='tag' aria-label='salaryAfterTax'>R{salaryAfterTax}</p>
                     </div>
                 </div>
 
@@ -344,7 +340,7 @@ const PageTwo = () => {
                         <p className='tag'>Total Number of Expenses</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>{noExpenses}</p>
+                        <p className='tag' aria-label='numberOfExpenses'>{noExpenses}</p>
                     </div>
                 </div>
 
@@ -353,7 +349,7 @@ const PageTwo = () => {
                         <p className='tag'>Sum of Expenses</p>
                     </div>
                     <div className='overview-split ov-right'>
-                        <p className='tag'>R{sum}</p>
+                        <p className='tag' aria-label='sumOfExpenses'>R{sum}</p>
                     </div>
                 </div>
 
@@ -368,57 +364,7 @@ const PageTwo = () => {
 
 
 
-                <div className='chart-con'>
-                    <h3 className='expense-chart-heading'>Expenses Chart</h3>
-                    <div className="chart">
-                        <Bar
-                            data={{
-                                labels: ["Unknown"],
-                                datasets: [{
-                                    label: 'Expenses',
-                                    data: [1, 2, 3, 4, 5],
-                                    backgroundColor: [
-                                        '#FC6161',
-                                        '#4DCEEA',
-                                        '#EEE85C',
-                                        '#82E26A',
-                                        '#E15CF6',
-                                        '#F6945C'
-                                    ],
-                                    borderColor: [
-                                        '#FC6161',
-                                        '#4DCEEA',
-                                        '#EEE85C',
-                                        '#82E26A',
-                                        '#E15CF6',
-                                        '#F6945C'
-                                    ],
-                                    borderWidth: 1
-                                },
-
-                                ],
-                            }}
-                            height={400}
-                            width={700}
-                            options={{
-                                maintainAspectRatio: false, scales: {
-                                    x: {
-                                        ticks: {
-                                            color: 'white'
-                                        }
-                                    },
-                                    y: {
-                                        ticks: {
-                                            color: 'white'
-                                        }
-                                    }
-                                }
-                            }
-                            }
-                        />
-
-                    </div>
-                </div>
+              
 
             </div>
 

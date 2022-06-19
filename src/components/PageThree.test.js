@@ -1,51 +1,82 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
-import  PageTwo from "./PageTwo"
+import  PageThree from "./PageThree"
 
+describe("Testing Page Three", () => {
 
-
-
-describe("Testing Page Two", () => {
 
     beforeEach(() => {
 
-        render(<PageTwo />);
+        render(<PageThree />);
 
     })
 
-    const typeInput = (inputOne) => {
+    const typeInputOne = (inputOne) => {
 
-        const SalaryElement = screen.getByLabelText(/salaryInput/i)
+        // console.log(inputOne);
+
+        const SalaryElementOne = screen.getByLabelText(/salaryOne/i)
 
         if (inputOne) {
-            userEvent.type(SalaryElement, inputOne)
+            userEvent.type(SalaryElementOne, inputOne)
         }
         return {
-            SalaryElement,
+            SalaryElementOne,
         }
     }
 
-    test("Testing Salary Input", () => {
-       
-        const  {SalaryElement} = typeInput("2")
-        expect(SalaryElement.value).toBe("2");
+    test("Testing Salary Input One", () => {
+
+        const  {SalaryElementOne} = typeInputOne("15000")
+        expect(SalaryElementOne.value).toBe("15000");
 
     })
 
 
-    const salaryVal = require('./PageTwo');
+    const typeInputTwo = (inputTwo) => {
 
-    // salaryVal();
+        const SalaryElementTwo = screen.getByLabelText(/salaryTwo/i)
 
-    
-    test("Testing Tax Calculation", () => {
+        if (inputTwo) {
+            userEvent.type(SalaryElementTwo, inputTwo)
+        }
+        return {
+            SalaryElementTwo,
+        }
+    }
+
+    test("Testing Salary Input Two", () => {
+
+        const  {SalaryElementTwo} = typeInputTwo("20000")
+        expect(SalaryElementTwo.value).toBe("20000");
+
+    })
+
+    test("Testing Salary One After Tax", () => {
+
+        const  {SalaryElementOne} = typeInputOne("15000");
+        const SalaryOneAfterTax = screen.getByLabelText("salary1AfterTax");
+        expect(SalaryOneAfterTax.textContent).toBe("R12300")
+    })
+
+    test("Testing Salary Two After Tax", () => {
+
+        const  {SalaryElementTwo} = typeInputTwo("20000");
+        const SalaryTwoAfterTax = screen.getByLabelText("salary2AfterTax");
+        expect(SalaryTwoAfterTax.textContent).toBe("R16400")
+    })
+
+
+    test("Testing Combined Salary", () => {
         
-        const  {SalaryElement} = typeInput("15000");
-        const TaxElement = screen.getByLabelText("salaryAfterTax");
+        const  {SalaryElementOne} = typeInputOne("15000");
+        const  {SalaryElementTwo} = typeInputTwo("30000");
+        const CombinedSalary = screen.getByLabelText("combinedSalary");
 
-       expect(TaxElement.textContent).toBe("R12300")
+       expect(CombinedSalary.textContent).toBe("R36900")
 
     })
+
 
 
     const ExpenseInputOne = (inputOne) => {
@@ -72,16 +103,11 @@ describe("Testing Page Two", () => {
         }
     }
 
-    // test("Testing Tax Calculation", () => {
-        
-        
 
-    // })
-    
     test("Testing Number Of Expenses", () => {
         
-        const  {ExpenseName} = typeInput("Rent");
-        const  {ExpenseAmount} = typeInput("7000");
+        const  {ExpenseName} = typeInputOne("Rent");
+        const  {ExpenseAmount} = typeInputTwo("7000");
             
         const AddButton = screen.getByRole('button', {name: /add/i});
 
@@ -97,15 +123,6 @@ describe("Testing Page Two", () => {
     })
 
     test("Testing Sum Of Expenses", () => {
-        
-        // const  {ExpenseName} = typeInput("Coffee");
-        // const  {ExpenseAmount} = typeInput("180");
-            
-        // const AddButton = screen.getByRole('button', {name: /add/i});
-
-        
-        // userEvent.click(AddButton);
-        // // console.log(ExpenseName)
 
         const SumExpenses = screen.getByLabelText(/sumOfExpenses/i)
         
@@ -113,6 +130,7 @@ describe("Testing Page Two", () => {
 
 
     })
+
 
     test("Testing Amount Left Over", () => {
 
@@ -135,5 +153,7 @@ describe("Testing Page Two", () => {
         // expect(CombinedSalary.textContent).toBe("R36900")
 
     })
+
+
 
 })

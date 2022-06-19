@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PageOne = () => {
+ const PageOne = () => {
     return (
         <div>
             <h1 className='main-heading'>Welcome to Allocte</h1>
